@@ -20,7 +20,7 @@ return (<LoadingIcon />);
           <span 
           key={label.id}
           className="badge rounded-pill m-1 label-picker"
-          style={{ border: `1px solid #${label.color}`, color: '#${label.color}' }}
+          style={{ border: `1px solid #${label.color}`, color: 'black' }}
       >
           {label.name}
       </span>
