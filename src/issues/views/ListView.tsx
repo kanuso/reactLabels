@@ -5,7 +5,15 @@ import { LabelPicker } from '../components/LabelPicker';
 
 export const ListView = () => {
 
-const  [selectedLabel, setselectedLabel] = useState<string[]>([])
+const  [selectedLabels, setselectedLabels] = useState<string[]>([]);
+
+
+
+const onLabelChanged = (labelName: string) => {
+  selectedLabels.includes(labelName)
+    ? setselectedLabels(selectedLabels.filter(label => label !== labelName))
+    : setselectedLabels([...selectedLabels, labelName]);
+}
 
   return (
     <div className="row mt-5">
@@ -13,10 +21,12 @@ const  [selectedLabel, setselectedLabel] = useState<string[]>([])
       <div className="col-8">
         <IssueList />
       </div>
-      
       <div className="col-4">
-        <LabelPicker />
+        <LabelPicker
+        selectedLabels={selectedLabels}
+        onchange={(labelName) => onLabelChanged(labelName)}
+         />
       </div>
     </div>
-  )
-}
+  );
+};
